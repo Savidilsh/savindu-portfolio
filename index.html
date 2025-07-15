@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savindu Wickramasinghe - Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 60px;
+            color: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .name {
+            font-size: 2.5em;
+            font-weight: 700;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .title {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #555;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            color: #667eea;
+        }
+
+        .summary {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #555;
+            text-align: justify;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, #f8f9ff, #e8ecff);
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .skill-category h4 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: #667eea;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        .education-item, .project-item {
+            background: linear-gradient(135deg, #f8f9ff, #e8ecff);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+        }
+
+        .education-header, .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .education-title, .project-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .education-date, .project-tech {
+            color: #667eea;
+            font-weight: 500;
+        }
+
+        .gpa {
+            background: #667eea;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .project-description {
+            color: #555;
+            line-height: 1.6;
+            margin-top: 10px;
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .achievement-item {
+            background: linear-gradient(135deg, #f8f9ff, #e8ecff);
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s ease;
+        }
+
+        .achievement-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .achievement-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .achievement-description {
+            color: #555;
+            font-size: 0.9em;
+        }
+
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .leadership-item {
+            background: linear-gradient(135deg, #f8f9ff, #e8ecff);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .leadership-role {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .leadership-org {
+            color: #555;
+            font-size: 0.9em;
+        }
+
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-element {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            top: 20%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .floating-element:nth-child(3) {
+            bottom: 10%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        .floating-element:nth-child(4) {
+            bottom: 20%;
+            right: 20%;
+            animation-delay: 1s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @media (max-width: 768px) {
+            .contact-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .name {
+                font-size: 2em;
+            }
+            
+            .education-header, .project-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+    </div>
+
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <div class="profile-img">
+                <i class="fas fa-user"></i>
+            </div>
+            <h1 class="name">Savindu Wickramasinghe</h1>
+            <p class="title">Electronics & Telecommunication Engineering Undergraduate</p>
+            <p class="title">University of Moratuwa, Sri Lanka</p>
+            
+            <div class="contact-info">
+                <a href="mailto:savindudilshan124@gmail.com" class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    savindudilshan124@gmail.com
+                </a>
+                <a href="tel:+94713359700" class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    +94 713 359 700
+                </a>
+                <a href="#" class="contact-item">
+                    <i class="fab fa-github"></i>
+                    Savidilsh
+                </a>
+                <a href="#" class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    Savindu Wickramasinghe
+                </a>
+            </div>
+        </div>
+
+        <!-- Summary Section -->
+        <div class="section">
+            <h2 class="section-title">
+                <i class="fas fa-user-circle"></i>
+                About Me
+            </h2>
+            <p class="summary">
+                I'm an Electronics and Telecommunications Engineering undergraduate at the University of Moratuwa, specializing in FPGA, AI, machine learning, and embedded systems. Throughout my academic journey, I've consistently demonstrated excellence with a cumulative GPA of 3.96/4.00, earning Dean's List recognition for three consecutive semesters. I have hands-on experience leading diverse engineering projects, from autonomous mobile robots to AI-powered recognition systems. My passion lies in finding innovative solutions to complex engineering challenges, particularly in the intersection of hardware and software development.
+            </p>
+        </div>
+
+        <!-- Skills Section -->
+        <div class="section">
+            <h2 class="section-title">
+                <i class="fas fa-code"></i>
+                Technical Skills
+            </h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Programming Languages</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">MATLAB</span>
+                        <span class="skill-tag">Java</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4>Technical Areas</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">FPGA</span>
+                        <span class="skill-tag">Embedded Systems</span>
+                        <span class="skill-tag">AI & ML</span>
+                        <span class="skill-tag">Robotics</span>
+                        <span class="skill-tag">Digital Design</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4>Design & Development</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">PCB Design</span>
+                        <span class="skill-tag">SolidWorks</span>
+                        <span class="skill-tag">3D Modeling</span>
+                        <span class="skill-tag">OpenCV</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4>Frameworks & Tools</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">TensorFlow</span>
+                        <span class="skill-tag">PyTorch</span>
+                        <span class="skill-tag">OpenCV</span>
+                        <span class="skill-tag">Git</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Education Section -->
+        <div class="section">
+            <h2 class="section-title">
+                <i class="fas fa-graduation-cap"></i>
+                Education
+            </h2>
+            <div class="education-item">
+                <div class="education-header">
+                    <div>
+                        <h3 class="education-title">B.Sc. in Electronic & Telecommunication Engineering</h3>
+                        <p>University of Moratuwa, Sri Lanka</p>
+                    </div>
+                    <span class="education-date">Feb 2023 – Present</span>
+                </div>
+                <div class="gpa">Cumulative GPA: 3.96/4.00</div>
+                <div class="gpa">Dean's List: Semester 1-3</div>
+            </div>
+            <div class="education-item">
+                <div class="education-header">
+                    <div>
+                        <h3 class="education-title">G.C.E. Advanced Level Examination</h3>
+                        <p>Physical Science Stream</p>
+                    </div>
+                    <span class="education-date">2021</span>
+                </div>
+                <div class="gpa">Z-Score: 2.41 (4A's)</div>
+            </div>
+        </div>
+
+        <!-- Projects Section -->
+        <div class="section">
+            <h2 class="section-title">
+                <i class="fas fa-project-diagram"></i>
+                Featured Projects
+            </h2>
+            
+            <div class="project-item">
+                <div class="project-header">
+                    <h3 class="project-title">Autonomous Mobile Robot</h3>
+                    <span class="project-tech">C++, LiDAR, SLAM</span>
+                </div>
+                <p class="project-description">
+                    Led a 10-member team to develop an autonomous mobile robot implementing SLAM algorithm in C++. Successfully interfaced with LiDAR sensors and designed a custom user interface for control and diagnostics.
+                </p>
+            </div>
+
+            <div class="project-item">
+                <div class="project-header">
+                    <h3 class="project-title">Sri Lankan Number Plate Recognition System</h3>
+                    <span class="project-tech">Python, OpenCV, PyTesseract</span>
+                </div>
+                <p class="project-description">
+                    Built an OCR-based Automatic Number Plate Recognition system supporting both batch image processing and real-time webcam input, specifically optimized for Sri Lankan license plates.
+                </p>
+            </div>
+
+            <div class="project-item">
+                <div class="project-header">
+                    <h3 class="project-title">Real-Time Facial Expression Recognition</h3>
+                    <span class="project-tech">Python, CNN, TensorFlow</span>
+                </div>
+                <p class="project-description">
+                    Developed a CNN model trained on FER2013 dataset with batch normalization and dropout regularization. Achieved 86.6% accuracy on happy emotions with live video processing capabilities.
+                </p>
+            </div>
+
+            <div class="project-item">
+                <div class="project-header">
+                    <h3 class="project-title">Qwen2-0.5B Language Model Fine-Tuning</h3>
+                    <span class="project-tech">Python, LoRA, Transformers</span>
+                </div>
+                <p class="project-description">
+                    Fine-tuned a large language model using LoRA with 4-bit quantization on Google Colab. Managed the complete workflow from data preprocessing through model deployment.
+                </p>
+            </div>
+        </div>
+
+        <!-- Achievements Section -->
+        <div class="section">
+            <h2 class="section-title">
+                <i class="fas fa-trophy"></i>
+                Honors & Awards
+            </h2>
+            <div class="achievements-grid">
+                <div class="achievement-item">
+                    <h4 class="achievement-title">2nd Place – AlgoXplore 1.0 CTF Competition (2024)</h4>
+                    <p class="achievement-description">National cybersecurity logic-based challenge; recognized for strong problem-solving performance.</p>
+                </div>
+                <div class="achievement-item">
+                    <h4 class="achievement-title">Dean's List – University of Moratuwa (2023–2025)</h4>
+                    <p class="achievement-description">Honored for outstanding academic performance across three consecutive semesters.</p>
+                </div>
+                <div class="achievement-item">
+                    <h4 class="achievement-title">Finalist – MoraXtream 9.0 (2024)</h4>
+                    <p class="achievement-description">Reached finals in university-level competitive programming contest.</p>
+                </div>
+                <div class="achievement-item">
+                    <h4 class="achievement-title">Finalist – Code X (2025)</h4>
+                    <p class="achievement-description">Finalist in coding and innovation showcase event.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Leadership Section -->
+        <div class="section">
+            <h2 class="section-title">
+                <i class="fas fa-users"></i>
+                Leadership & Involvement
+            </h2>
+            <div class="leadership-grid">
+                <div class="leadership-item">
+                    <h4 class="leadership-role">Batch Representative</h4>
+                    <p class="leadership-org">University of Moratuwa (Sem 4–7)</p>
+                </div>
+                <div class="leadership-item">
+                    <h4 class="leadership-role">IR Panelist</h4>
+                    <p class="leadership-org">AIESEC in UOM (2023–2024)</p>
+                </div>
+                <div class="leadership-item">
+                    <h4 class="leadership-role">Project Leader</h4>
+                    <p class="leadership-org">AIESEC - Rooted 3.1, Aquatica 3.2</p>
+                </div>
+                <div class="leadership-item">
+                    <h4 class="leadership-role">Co-lead</h4>
+                    <p class="leadership-org">IEEE UOM - Finnc, RobotNexus</p>
+                </div>
+                <div class="leadership-item">
+                    <h4 class="leadership-role">Assistant Pillar Head</h4>
+                    <p class="leadership-org">Mora E-Sports - Administration</p>
+                </div>
+                <div class="leadership-item">
+                    <h4 class="leadership-role">Senior Prefect</h4>
+                    <p class="leadership-org">Richmond College</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Certifications Section -->
+        <div class="section">
+            <h2 class="section-title">
+                <i class="fas fa-certificate"></i>
+                Certifications
+            </h2>
+            <div class="achievements-grid">
+                <div class="achievement-item">
+                    <h4 class="achievement-title">C++ Programming</h4>
+                    <p class="achievement-description">SoloLearn - June 2023</p>
+                </div>
+                <div class="achievement-item">
+                    <h4 class="achievement-title">MATLAB Onramp</h4>
+                    <p class="achievement-description">MathWorks - June 2023</p>
+                </div>
+                <div class="achievement-item">
+                    <h4 class="achievement-title">Introduction to Generative AI</h4>
+                    <p class="achievement-description">Coursera - May 2024</p>
+                </div>
+                <div class="achievement-item">
+                    <h4 class="achievement-title">Prompt Engineering Basics</h4>
+                    <p class="achievement-description">Coursera - May 2024</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

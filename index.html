@@ -161,6 +161,12 @@
             border-radius: 15px;
             margin-bottom: 20px;
             border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .education-item:hover, .project-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
         }
 
         .education-header, .project-header {
@@ -210,11 +216,30 @@
             padding: 20px;
             border-radius: 15px;
             border-left: 4px solid #667eea;
-            transition: transform 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .achievement-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .achievement-item:hover::before {
+            left: 100%;
         }
 
         .achievement-item:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
         }
 
         .achievement-title {
@@ -260,6 +285,7 @@
             height: 100%;
             pointer-events: none;
             z-index: -1;
+            overflow: hidden;
         }
 
         .floating-element {
@@ -295,9 +321,238 @@
             animation-delay: 1s;
         }
 
+        .floating-element:nth-child(5) {
+            top: 50%;
+            left: 50%;
+            animation-delay: 3s;
+            width: 40px;
+            height: 40px;
+        }
+
+        .floating-element:nth-child(6) {
+            top: 70%;
+            right: 30%;
+            animation-delay: 5s;
+            width: 80px;
+            height: 80px;
+        }
+
         @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Typing Animation */
+        .typing-animation {
+            overflow: hidden;
+            border-right: 3px solid #667eea;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: 0.1em;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #667eea; }
+        }
+
+        /* Scroll-triggered animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease-out;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+
+        /* Interactive elements */
+        .interactive-card {
+            transform: translateY(0);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .interactive-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .skill-tag {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .skill-tag:hover {
+            background: #764ba2;
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .contact-item {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .contact-item:hover::before {
+            left: 100%;
+        }
+
+        /* Progress bars for skills */
+        .skill-progress {
+            height: 4px;
+            background: #e0e0e0;
+            border-radius: 2px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+
+        .skill-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+            transform: translateX(-100%);
+            animation: fill-progress 2s ease-out forwards;
+        }
+
+        @keyframes fill-progress {
+            to { transform: translateX(0); }
+        }
+
+        /* Glowing effect */
+        .glow {
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .glow:hover {
+            box-shadow: 0 0 30px rgba(102, 126, 234, 0.5);
+        }
+
+        /* Particle effect */
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #667eea;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: particle-float 3s ease-out forwards;
+        }
+
+        @keyframes particle-float {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) scale(0);
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation dots */
+        .nav-dots {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            margin: 10px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dot.active {
+            background: #667eea;
+            transform: scale(1.2);
+        }
+
+        .nav-dot:hover {
+            background: #667eea;
+            transform: scale(1.1);
+        }
+
+        /* Loading animation */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Pulse animation for important elements */
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
 
         @media (max-width: 768px) {
@@ -323,32 +578,49 @@
         <div class="floating-element"></div>
         <div class="floating-element"></div>
         <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+    </div>
+
+    <!-- Loading Screen -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Navigation Dots -->
+    <div class="nav-dots">
+        <div class="nav-dot active" onclick="scrollToSection('header')"></div>
+        <div class="nav-dot" onclick="scrollToSection('summary')"></div>
+        <div class="nav-dot" onclick="scrollToSection('skills')"></div>
+        <div class="nav-dot" onclick="scrollToSection('education')"></div>
+        <div class="nav-dot" onclick="scrollToSection('projects')"></div>
+        <div class="nav-dot" onclick="scrollToSection('achievements')"></div>
     </div>
 
     <div class="container">
         <!-- Header Section -->
-        <div class="header">
-            <div class="profile-img">
+        <div class="header fade-in-up" id="header">
+            <div class="profile-img pulse">
                 <i class="fas fa-user"></i>
             </div>
-            <h1 class="name">Savindu Wickramasinghe</h1>
+            <h1 class="name typing-animation">Savindu Wickramasinghe</h1>
             <p class="title">Electronics & Telecommunication Engineering Undergraduate</p>
             <p class="title">University of Moratuwa, Sri Lanka</p>
             
             <div class="contact-info">
-                <a href="mailto:savindudilshan124@gmail.com" class="contact-item">
+                <a href="mailto:savindudilshan124@gmail.com" class="contact-item glow" onclick="createParticles(event)">
                     <i class="fas fa-envelope"></i>
                     savindudilshan124@gmail.com
                 </a>
-                <a href="tel:+94713359700" class="contact-item">
+                <a href="tel:+94713359700" class="contact-item glow" onclick="createParticles(event)">
                     <i class="fas fa-phone"></i>
                     +94 713 359 700
                 </a>
-                <a href="#" class="contact-item">
+                <a href="#" class="contact-item glow" onclick="createParticles(event)">
                     <i class="fab fa-github"></i>
                     Savidilsh
                 </a>
-                <a href="#" class="contact-item">
+                <a href="#" class="contact-item glow" onclick="createParticles(event)">
                     <i class="fab fa-linkedin"></i>
                     Savindu Wickramasinghe
                 </a>
@@ -356,7 +628,7 @@
         </div>
 
         <!-- Summary Section -->
-        <div class="section">
+        <div class="section fade-in-up" id="summary">
             <h2 class="section-title">
                 <i class="fas fa-user-circle"></i>
                 About Me
@@ -367,59 +639,71 @@
         </div>
 
         <!-- Skills Section -->
-        <div class="section">
+        <div class="section fade-in-up" id="skills">
             <h2 class="section-title">
                 <i class="fas fa-code"></i>
                 Technical Skills
             </h2>
             <div class="skills-grid">
-                <div class="skill-category">
+                <div class="skill-category interactive-card stagger-1">
                     <h4>Programming Languages</h4>
                     <div class="skill-tags">
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">C++</span>
-                        <span class="skill-tag">MATLAB</span>
-                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag" onclick="showSkillLevel(90)">Python</span>
+                        <span class="skill-tag" onclick="showSkillLevel(85)">C++</span>
+                        <span class="skill-tag" onclick="showSkillLevel(80)">MATLAB</span>
+                        <span class="skill-tag" onclick="showSkillLevel(75)">Java</span>
+                    </div>
+                    <div class="skill-progress">
+                        <div class="skill-progress-bar" style="width: 90%;"></div>
                     </div>
                 </div>
-                <div class="skill-category">
+                <div class="skill-category interactive-card stagger-2">
                     <h4>Technical Areas</h4>
                     <div class="skill-tags">
-                        <span class="skill-tag">FPGA</span>
-                        <span class="skill-tag">Embedded Systems</span>
-                        <span class="skill-tag">AI & ML</span>
-                        <span class="skill-tag">Robotics</span>
-                        <span class="skill-tag">Digital Design</span>
+                        <span class="skill-tag" onclick="showSkillLevel(85)">FPGA</span>
+                        <span class="skill-tag" onclick="showSkillLevel(88)">Embedded Systems</span>
+                        <span class="skill-tag" onclick="showSkillLevel(90)">AI & ML</span>
+                        <span class="skill-tag" onclick="showSkillLevel(82)">Robotics</span>
+                        <span class="skill-tag" onclick="showSkillLevel(87)">Digital Design</span>
+                    </div>
+                    <div class="skill-progress">
+                        <div class="skill-progress-bar" style="width: 86%;"></div>
                     </div>
                 </div>
-                <div class="skill-category">
+                <div class="skill-category interactive-card stagger-3">
                     <h4>Design & Development</h4>
                     <div class="skill-tags">
-                        <span class="skill-tag">PCB Design</span>
-                        <span class="skill-tag">SolidWorks</span>
-                        <span class="skill-tag">3D Modeling</span>
-                        <span class="skill-tag">OpenCV</span>
+                        <span class="skill-tag" onclick="showSkillLevel(80)">PCB Design</span>
+                        <span class="skill-tag" onclick="showSkillLevel(85)">SolidWorks</span>
+                        <span class="skill-tag" onclick="showSkillLevel(83)">3D Modeling</span>
+                        <span class="skill-tag" onclick="showSkillLevel(88)">OpenCV</span>
+                    </div>
+                    <div class="skill-progress">
+                        <div class="skill-progress-bar" style="width: 84%;"></div>
                     </div>
                 </div>
-                <div class="skill-category">
+                <div class="skill-category interactive-card stagger-4">
                     <h4>Frameworks & Tools</h4>
                     <div class="skill-tags">
-                        <span class="skill-tag">TensorFlow</span>
-                        <span class="skill-tag">PyTorch</span>
-                        <span class="skill-tag">OpenCV</span>
-                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag" onclick="showSkillLevel(85)">TensorFlow</span>
+                        <span class="skill-tag" onclick="showSkillLevel(82)">PyTorch</span>
+                        <span class="skill-tag" onclick="showSkillLevel(88)">OpenCV</span>
+                        <span class="skill-tag" onclick="showSkillLevel(90)">Git</span>
+                    </div>
+                    <div class="skill-progress">
+                        <div class="skill-progress-bar" style="width: 86%;"></div>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Education Section -->
-        <div class="section">
+        <div class="section fade-in-up" id="education">
             <h2 class="section-title">
                 <i class="fas fa-graduation-cap"></i>
                 Education
             </h2>
-            <div class="education-item">
+            <div class="education-item interactive-card">
                 <div class="education-header">
                     <div>
                         <h3 class="education-title">B.Sc. in Electronic & Telecommunication Engineering</h3>
@@ -427,10 +711,10 @@
                     </div>
                     <span class="education-date">Feb 2023 – Present</span>
                 </div>
-                <div class="gpa">Cumulative GPA: 3.96/4.00</div>
+                <div class="gpa pulse">Cumulative GPA: 3.96/4.00</div>
                 <div class="gpa">Dean's List: Semester 1-3</div>
             </div>
-            <div class="education-item">
+            <div class="education-item interactive-card">
                 <div class="education-header">
                     <div>
                         <h3 class="education-title">G.C.E. Advanced Level Examination</h3>
@@ -443,8 +727,78 @@
         </div>
 
         <!-- Projects Section -->
-        <div class="section">
+        <div class="section fade-in-up" id="projects">
             <h2 class="section-title">
+                <i class="fas fa-project-diagram"></i>
+                Featured Projects
+            </h2>
+            
+            <div class="project-item interactive-card" onclick="expandProject(this)">
+                <div class="project-header">
+                    <h3 class="project-title">Autonomous Mobile Robot</h3>
+                    <span class="project-tech">C++, LiDAR, SLAM</span>
+                </div>
+                <p class="project-description">
+                    Led a 10-member team to develop an autonomous mobile robot implementing SLAM algorithm in C++. Successfully interfaced with LiDAR sensors and designed a custom user interface for control and diagnostics.
+                </p>
+            </div>
+
+            <div class="project-item interactive-card" onclick="expandProject(this)">
+                <div class="project-header">
+                    <h3 class="project-title">Sri Lankan Number Plate Recognition System</h3>
+                    <span class="project-tech">Python, OpenCV, PyTesseract</span>
+                </div>
+                <p class="project-description">
+                    Built an OCR-based Automatic Number Plate Recognition system supporting both batch image processing and real-time webcam input, specifically optimized for Sri Lankan license plates.
+                </p>
+            </div>
+
+            <div class="project-item interactive-card" onclick="expandProject(this)">
+                <div class="project-header">
+                    <h3 class="project-title">Real-Time Facial Expression Recognition</h3>
+                    <span class="project-tech">Python, CNN, TensorFlow</span>
+                </div>
+                <p class="project-description">
+                    Developed a CNN model trained on FER2013 dataset with batch normalization and dropout regularization. Achieved 86.6% accuracy on happy emotions with live video processing capabilities.
+                </p>
+            </div>
+
+            <div class="project-item interactive-card" onclick="expandProject(this)">
+                <div class="project-header">
+                    <h3 class="project-title">Qwen2-0.5B Language Model Fine-Tuning</h3>
+                    <span class="project-tech">Python, LoRA, Transformers</span>
+                </div>
+                <p class="project-description">
+                    Fine-tuned a large language model using LoRA with 4-bit quantization on Google Colab. Managed the complete workflow from data preprocessing through model deployment.
+                </p>
+            </div>
+        </div>
+
+        <!-- Achievements Section -->
+        <div class="section fade-in-up" id="achievements">
+            <h2 class="section-title">
+                <i class="fas fa-trophy"></i>
+                Honors & Awards
+            </h2>
+            <div class="achievements-grid">
+                <div class="achievement-item" onclick="showAchievementDetails('ctf')">
+                    <h4 class="achievement-title">2nd Place – AlgoXplore 1.0 CTF Competition (2024)</h4>
+                    <p class="achievement-description">National cybersecurity logic-based challenge; recognized for strong problem-solving performance.</p>
+                </div>
+                <div class="achievement-item" onclick="showAchievementDetails('deans')">
+                    <h4 class="achievement-title">Dean's List – University of Moratuwa (2023–2025)</h4>
+                    <p class="achievement-description">Honored for outstanding academic performance across three consecutive semesters.</p>
+                </div>
+                <div class="achievement-item" onclick="showAchievementDetails('morax')">
+                    <h4 class="achievement-title">Finalist – MoraXtream 9.0 (2024)</h4>
+                    <p class="achievement-description">Reached finals in university-level competitive programming contest.</p>
+                </div>
+                <div class="achievement-item" onclick="showAchievementDetails('codex')">
+                    <h4 class="achievement-title">Finalist – Code X (2025)</h4>
+                    <p class="achievement-description">Finalist in coding and innovation showcase event.</p>
+                </div>
+            </div>
+        </div>title">
                 <i class="fas fa-project-diagram"></i>
                 Featured Projects
             </h2>
